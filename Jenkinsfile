@@ -5,7 +5,7 @@ pipeline {
     CLUSTER = "test-spinnaker"
     CLUSTER_ZONE = "us-central1-c"
     IMAGE_TAG = "gcr.io/gj-playground/frontend-baseline"
-    JENKINS_CRED = gj-playground
+    JENKINS_CRED = "gj-playground"
   }
   agent {
     kubernetes {
