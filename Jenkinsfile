@@ -10,7 +10,7 @@ pipeline {
   agent {
     kubernetes {
       defaultContainer 'jnlp'
-      yaml """"
+      yaml “”""
 apiVersion: v1
 kind: Pod
 metadata:
@@ -31,7 +31,7 @@ spec:
     - cat
     tty: true
   
-  """"
+  “”""
 }
   }
   stages {
