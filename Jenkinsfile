@@ -37,7 +37,7 @@ spec:
   stages {
     stage('Bake') {
       steps {
-        container(name: 'kaniko') {
+        container('kaniko') {
             sh '''
             /kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --destination=gcr.io/gj-playground/frontend-baseline . --destination=gcr.io/gj-playground/frontend-baseline .
             '''
