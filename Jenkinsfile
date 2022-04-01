@@ -34,15 +34,6 @@ spec:
 }
   }
   stages {
-    stage(‘Test’) {
-      steps {
-        container(‘java’) {
-          sh “”"
-            echo “******** currently executing Test stage ********”
-          “”"
-        }
-      }
-    }
     stage('Bake') {
       steps {
         container(name: 'kaniko') {
@@ -50,6 +41,8 @@ spec:
             /kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --destination=gcr.io/gj-playground/frontend-baseline . --destination=gcr.io/gj-playground/frontend-baseline .
             '''
         }
+      }
+      
       }
     }
 }
