@@ -20,17 +20,17 @@ labels:
 spec:
   restartPolicy: Never
   containers:
-     - name: kaniko
-       image: gcr.io/kaniko-project/executor:v1.0.0
-       imagePullPolicy: Always
-       command:
-       - cat
-       tty: true
-     - name: gcloud
-       image: gcr.io/google.com/cloudsdktool/cloud-sdk:latest
-       command:
-       - cat
-       tty: true
+  - name: kaniko
+    image: gcr.io/kaniko-project/executor:v1.0.0
+    imagePullPolicy: Always
+    command:
+    - cat
+    tty: true
+  - name: gcloud
+    image: gcr.io/google.com/cloudsdktool/cloud-sdk:latest
+    command:
+    - cat
+    tty: true
   
   “”""
 }
