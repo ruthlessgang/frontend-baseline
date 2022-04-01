@@ -18,10 +18,11 @@ metadata:
 labels:
   component: ci
 spec:
-  Use service account that can deploy to all namespaces
+  restartPolicy: Never
   containers:
   - name: kaniko
     image: gcr.io/kaniko-project/executor:v1.0.0
+    imagePullPolicy: Always
     command:
     - cat
     tty: true
