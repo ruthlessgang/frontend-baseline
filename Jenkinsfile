@@ -3,7 +3,7 @@ pipeline {
     PROJECT = “gj-playground”
     APP_NAME = “hipster-adservice”
     CLUSTER = “test-spinnaker”
-    CLUSTER_ZONE = “us-central1-c	”
+    CLUSTER_ZONE = “us-central1-c”
     IMAGE_TAG = “gcr.io/gj-playground/frontend-baseline”
     JENKINS_CRED = gj-playground
   }
