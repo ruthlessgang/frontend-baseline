@@ -21,7 +21,7 @@ spec:
   restartPolicy: Never
   containers:
   - name: kaniko
-    image: gcr.io/gj-playground/test-time/a48b95b273cb
+    image: gcr.io/gj-playground/test-time:latest
     command:
     - cat
     tty: true
