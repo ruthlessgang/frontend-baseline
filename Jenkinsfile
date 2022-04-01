@@ -1,16 +1,16 @@
 pipeline {
   environment {
-    PROJECT = “gj-playground”
-    APP_NAME = “hipster-adservice”
-    CLUSTER = “test-spinnaker”
-    CLUSTER_ZONE = “us-central1-c”
-    IMAGE_TAG = “gcr.io/gj-playground/frontend-baseline”
+    PROJECT = "gj-playground"
+    APP_NAME = "hipster-adservice"
+    CLUSTER = "test-spinnaker"
+    CLUSTER_ZONE = "us-central1-c"
+    IMAGE_TAG = "gcr.io/gj-playground/frontend-baseline"
     JENKINS_CRED = gj-playground
   }
   agent {
     kubernetes {
-      defaultContainer ‘jnlp’
-      yaml “”""
+      defaultContainer 'jnlp'
+      yaml """"
 apiVersion: v1
 kind: Pod
 metadata:
@@ -22,7 +22,6 @@ spec:
   containers:
   - name: kaniko
     image: gcr.io/kaniko-project/executor:v1.0.0
-    imagePullPolicy: Always
     command:
     - cat
     tty: true
@@ -32,7 +31,7 @@ spec:
     - cat
     tty: true
   
-  “”""
+  """"
 }
   }
   stages {
