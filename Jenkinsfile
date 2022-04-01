@@ -17,7 +17,7 @@ metadata:
 labels:
   component: ci
 spec:
-  # Use service account that can deploy to all namespaces
+  Use service account that can deploy to all namespaces
   containers:
   - name: java
     image: openjdk:8-slim
