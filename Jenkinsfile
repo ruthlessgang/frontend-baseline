@@ -10,11 +10,11 @@ pipeline {
   agent {
     kubernetes {
       defaultContainer 'jnlp'
-      yaml “”""
+      yaml """
 apiVersion: v1
 kind: Pod
 metadata:
-  name: kaniko-gcr
+  name: kaniko
 labels:
   component: ci
 spec:
@@ -31,7 +31,7 @@ spec:
     - cat
     tty: true
   
-  “”""
+  """
 }
   }
   stages {
