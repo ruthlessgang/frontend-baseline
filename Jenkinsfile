@@ -14,13 +14,14 @@ pipeline {
 apiVersion: v1
 kind: Pod
 metadata:
+  name: kaniko-gcr
 labels:
   component: ci
 spec:
   Use service account that can deploy to all namespaces
   containers:
-  - name: java
-    image: openjdk:8-slim
+  - name: kaniko
+    image: gcr.io/kaniko-project/executor:v1.0.0
     command:
     - cat
     tty: true
