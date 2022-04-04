@@ -34,7 +34,7 @@ spec:
       steps {
         container('kaniko') {
             sh '''
-            /kaniko/executor --dockerfile=./Dockerfile --context=/home/jenkins/agent/workspace/frontend baseline/go.mod --destination=gcr.io/gj-playground/frontend-baseline --destination=gcr.io/gj-playground/frontend-baseline 
+            /kaniko/executor --dockerfile=./Dockerfile --context='pwd' --destination=gcr.io/gj-playground/frontend-baseline --destination=gcr.io/gj-playground/frontend-baseline 
             '''
         }
       }
