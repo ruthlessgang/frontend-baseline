@@ -31,8 +31,6 @@ RUN apk add --no-cache ca-certificates \
     busybox-extras net-tools bind-tools
 WORKDIR /src
 COPY --from=builder /go/bin/frontend /src/server
-RUN file="$(ls -1 /src/server)" && echo $file
-RUN echo $(ls -1 /src/server)
 COPY ./templates ./templates
 COPY ./static ./static
 
