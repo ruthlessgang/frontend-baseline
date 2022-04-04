@@ -34,6 +34,7 @@ spec:
       steps {
         container('kaniko') {
             sh '''
+            pwd
             /kaniko/executor --dockerfile=./Dockerfile --context=/src/server --destination=gcr.io/gj-playground/frontend-baseline --destination=gcr.io/gj-playground/frontend-baseline 
             '''
         }
