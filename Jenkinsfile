@@ -35,8 +35,8 @@ spec:
         container('kaniko') {
             sh '''
             pwd
-            echo $SVC_ACCOUNT_KEY > ./creds/serviceaccount.json
-            gcloud auth activate-service-account fis-jenkins-sa@fis-poc-346406.iam.gserviceaccount.com --key-file=/path/key.json --project=fis-poc-346406
+            echo $SVC_ACCOUNT_KEY > ./creds/fis-poc-346406-739f80e0e3b4.json
+            gcloud auth activate-service-account fis-jenkins-sa@fis-poc-346406.iam.gserviceaccount.com --key-file=./creds/fis-poc-346406-739f80e0e3b4.json --project=fis-poc-346406
             /kaniko/executor --dockerfile=./Dockerfile --context=/home/jenkins/agent/workspace/frontend --destination=asia.gcr.io/fis-poc-346406/frontend-baseline --destination=asia.gcr.io/fis-poc-346406/frontend-baseline 
             '''
         }
