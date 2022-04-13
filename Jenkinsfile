@@ -36,7 +36,7 @@ spec:
             sh '''
             pwd
             echo $SVC_ACCOUNT_KEY
-            gcloud auth activate-service-account fis-jenkins-sa@fis-poc-346406.iam.gserviceaccount.com --key-file=./creds/sa-jenkins.json --project=fis-poc-346406
+            gcloud auth activate-service-account fis-jenkins-sa@fis-poc-346406.iam.gserviceaccount.com --key-file=./creds/sa-jenkins --project=fis-poc-346406
             /kaniko/executor --dockerfile=./Dockerfile --context=/home/jenkins/agent/workspace/frontend --destination=asia.gcr.io/fis-poc-346406/frontend-baseline --destination=asia.gcr.io/fis-poc-346406/frontend-baseline 
             '''
         }
