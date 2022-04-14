@@ -38,7 +38,7 @@ spec:
         container('gcloud') {
             sh '''
             gcloud auth list
-            gcloud auth activate-service-account fis-jenkins-sa@fis-poc-346406.iam.gserviceaccount.com --project=fis-poc-346406
+            gcloud config set account fis-jenkins-sa@fis-poc-346406.iam.gserviceaccount.com 
             '''
         }
       }
