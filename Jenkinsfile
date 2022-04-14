@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    SVC_ACCOUNT_KEY = credentials('fis-poc-346406')
+    SVC_ACCOUNT_KEY = credentials('secret')
     PROJECT = "fis-poc-346406"
     APP_NAME = "hipster-adservice"
     CLUSTER = "fis-poc-1"
@@ -36,7 +36,7 @@ spec:
             sh '''
             pwd
             echo $SVC_ACCOUNT_KEY > ./creds/serviceaccount.json
-            gcloud auth service-account fis-jenkins-sa@fis-poc-346406.iam.gserviceaccount.com --key-file=./creds/serviceaccount.json --project=fis-poc-346406
+            gcloud auth activate-service-account --key-file=./creds/serviceaccount.json 
             /kaniko/executor --dockerfile=./Dockerfile --context=/home/jenkins/agent/workspace/frontend --destination=asia.gcr.io/fis-poc-346406/frontend-baseline --destination=asia.gcr.io/fis-poc-346406/frontend-baseline 
             '''
         }
