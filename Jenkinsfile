@@ -36,7 +36,6 @@ spec:
             sh '''
             pwd
             echo $SVC_ACCOUNT_KEY
-            wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-381.0.0-linux-x86_64.tar.gz
             gcloud auth activate-service-account --key-file=$SVC_ACCOUNT_KEY
             /kaniko/executor --dockerfile=./Dockerfile --context=/home/jenkins/agent/workspace/frontend --destination=asia.gcr.io/fis-poc-346406/frontend-baseline --destination=asia.gcr.io/fis-poc-346406/frontend-baseline 
             '''
