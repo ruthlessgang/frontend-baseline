@@ -4,7 +4,7 @@ pipeline {
     APP_NAME = "hipster-adservice"
     CLUSTER = "fis-poc-1"
     CLUSTER_ZONE = "asia-southeast1-a"
-    IMAGE_TAG = "asia.gcr.io/gj-playground/frontend-baseline"
+    IMAGE_TAG = "asia.gcr.io/fis-poc-346406/frontend-baseline"
   }
   agent {
     kubernetes {
@@ -33,7 +33,7 @@ spec:
         container('kaniko') {
             sh '''
             pwd
-            /kaniko/executor --dockerfile=./Dockerfile --context=/home/jenkins/agent/workspace/frontend --destination=asia.gcr.io/gj-playground/frontend-baseline --destination=asia.gcr.io/gj-playground/frontend-baseline 
+            /kaniko/executor --dockerfile=./Dockerfile --context=/home/jenkins/agent/workspace/frontend --destination=asia.gcr.io/fis-poc-346406/frontend-baseline --destination=asia.gcr.io/fis-poc-346406/frontend-baseline 
             '''
         }
       }
