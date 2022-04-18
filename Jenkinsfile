@@ -3,7 +3,7 @@ pipeline {
     PROJECT = "fis-poc-346406"
     APP_NAME = "hipster-adservice"
     CLUSTER = "fis-poc-1"
-    CLUSTER_ZONE = "uasia-southeast1-a"
+    CLUSTER_ZONE = "asia-southeast1-a"
     IMAGE_TAG = "asia.gcr.io/gj-playground/frontend-baseline"
   }
   agent {
