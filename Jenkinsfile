@@ -1,9 +1,9 @@
 pipeline {
   environment {
-    PROJECT = "gj-playground"
+    PROJECT = "fis-poc-346406"
     APP_NAME = "hipster-adservice"
-    CLUSTER = "test__spinnaker "
-    CLUSTER_ZONE = "us-central1-c"
+    CLUSTER = "fis-poc-1"
+    CLUSTER_ZONE = "uasia-southeast1-a"
     IMAGE_TAG = "asia.gcr.io/gj-playground/frontend-baseline"
   }
   agent {
@@ -24,25 +24,10 @@ spec:
     command:
     - cat
     tty: true
-  - name: gcloud
-    image: gcr.io/google.com/cloudsdktool/cloud-sdk:latest
-    command:
-    - cat
-    tty: true
   """
 }
   }
   stages {
-    stage('test') {
-      steps {
-        container('gcloud') {
-            sh '''
-            gcloud auth list
-            gcloud config set account fis-jenkins-sa@fis-poc-346406.iam.gserviceaccount.com 
-            '''
-        }
-      }
-    }
     stage('Bake') {
       steps {
         container('kaniko') {
