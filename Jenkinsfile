@@ -1,9 +1,9 @@
 pipeline {
   environment {
-    PROJECT = "fis-poc-346406"
+    PROJECT = "gj-playground"
     APP_NAME = "hipster-adservice"
-    CLUSTER = "fis-poc-1 "
-    CLUSTER_ZONE = "asia-southeast1-a"
+    CLUSTER = "test__spinnaker "
+    CLUSTER_ZONE = "us-central1-c"
     IMAGE_TAG = "asia.gcr.io/gj-playground/frontend-baseline"
   }
   agent {
