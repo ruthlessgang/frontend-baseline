@@ -1,10 +1,8 @@
 pipeline {
   environment {
-    PROJECT = "gj-playground"
-    APP_NAME = "hipster-adservice"
-    CLUSTER = "test__spinnaker"
-    CLUSTER_ZONE = "us-central1-c"
-    IMAGE_TAG = "gcr.io/gj-playground/frontend-baseline"
+    PROJECT = "fis-poc-346406"
+    IMAGE_TAG = "asia.gcr.io/gj-playground/frontend-baseline"
+    SVC_ACCOUNT_KEY = credentials('fis-poc-346406')
   }
   agent {
     kubernetes {
@@ -19,6 +17,11 @@ labels:
 spec:
   restartPolicy: Never
   containers:
+   - name: gcloud
+    image: gcr.io/google.com/cloudsdktool/cloud-sdk:latest
+    command:
+    - cat
+    tty: true
   - name: kaniko
     image: gcr.io/kaniko-project/executor:debug
     command:
@@ -28,12 +31,24 @@ spec:
 }
   }
   stages {
+    stage('test') {
+      steps {
+        container('gcloud') {
+            sh '''
+            echo $SVC_ACCOUNT_KEY > ./creds/serviceaccount.json
+            gcloud auth activate-service-account --key-file=./creds/serviceaccount.json
+            gcloud auth list
+            '''
+        }
+      }
+      
+      }
     stage('Bake') {
       steps {
         container('kaniko') {
             sh '''
             pwd
-            /kaniko/executor --dockerfile=./Dockerfile --context=/home/jenkins/agent/workspace/frontend --destination=gcr.io/gj-playground/frontend-baseline --destination=gcr.io/gj-playground/frontend-baseline 
+            /kaniko/executor --dockerfile=./Dockerfile --context=/home/jenkins/agent/workspace/frontend --destination=asia.gcr.io/fis-poc-346406/frontend-baseline --destination=asia.gcr.io/fis-poc-346406/frontend-baseline 
             '''
         }
       }
