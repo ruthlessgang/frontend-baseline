@@ -2,7 +2,7 @@ pipeline {
   environment {
     PROJECT = "fis-poc-346406"
     IMAGE_TAG = "asia.gcr.io/gj-playground/frontend-baseline"
-    SVC_ACCOUNT_KEY = credentials('secret')
+    SVC_ACCOUNT_KEY = credentials('jenkins-sa')
   }
   agent {
     kubernetes {
