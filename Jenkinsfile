@@ -25,11 +25,10 @@ spec:
     env:
      - name: GOOGLE_APPLICATION_CREDENTIALS
        value: /secret/kaniko-secret.json
-  restartPolicy: Never
   volumes:
-    - name: jenkins-sa
+  - name: jenkins-sa
       secret:
-       secretName: jenkins-sa
+        secretName: jenkins-sa
     command:
     - cat
     tty: true
