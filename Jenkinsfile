@@ -17,7 +17,7 @@ labels:
 spec:
   restartPolicy: Never
   containers:
-   - name: gcloud
+  - name: gcloud
     image: gcr.io/google.com/cloudsdktool/cloud-sdk:latest
     command:
     - cat
