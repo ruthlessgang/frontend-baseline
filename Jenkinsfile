@@ -20,11 +20,11 @@ spec:
   - name: gcloud
     image: gcr.io/google.com/cloudsdktool/cloud-sdk:latest
     volumeMounts:
-      - name: jenkins-sa
-        mountPath: /secret
+    - name: jenkins-sa
+      mountPath: /secret
     env:
-     - name: GOOGLE_APPLICATION_CREDENTIALS
-       value: /secret/kaniko-secret.json
+    - name: GOOGLE_APPLICATION_CREDENTIALS
+      value: /secret/kaniko-secret.json
   volumes:
   - name: jenkins-sa
       secret:
