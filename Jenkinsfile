@@ -36,6 +36,7 @@ spec:
         container('gcloud') {
             sh '''
             echo -n $SVC_ACCOUNT_KEY > "${HOME}/serviceaccount.json"
+            cat ${HOME}/serviceaccount.json
             gcloud auth activate-service-account --key-file=${HOME}/serviceaccount.json
             gcloud auth list
             '''
