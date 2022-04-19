@@ -19,6 +19,17 @@ spec:
   containers:
   - name: gcloud
     image: gcr.io/google.com/cloudsdktool/cloud-sdk:latest
+    volumeMounts:
+     - name: jenkins-sa
+       mountPath: /secret
+    env:
+     - name: GOOGLE_APPLICATION_CREDENTIALS
+       value: /secret/kaniko-secret.json
+  restartPolicy: Never
+  volumes:
+   - name: jenkins-sa
+     secret:
+       secretName: jenkins-sa
     command:
     - cat
     tty: true
