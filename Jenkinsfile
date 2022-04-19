@@ -35,8 +35,8 @@ spec:
       steps {
         container('gcloud') {
             sh '''
-            echo $SVC_ACCOUNT_KEY > ./creds/serviceaccount.json
-            gcloud auth activate-service-account --key-file=./creds/serviceaccount.json
+            echo $SVC_ACCOUNT_KEY > "$HOME/serviceaccount.json"
+            gcloud auth activate-service-account --key-file=$HOME/serviceaccount.json
             gcloud auth list
             '''
         }
