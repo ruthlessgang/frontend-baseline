@@ -31,7 +31,7 @@ spec:
 }
   }
   stages {
-    stage('test') {
+    /**stage('test') {
       steps {
         container('gcloud') {
             sh '''
@@ -43,7 +43,7 @@ spec:
         }
       }
       
-      }
+      }**/
     stage('Bake') {
       steps {
         container('kaniko') {
