@@ -23,7 +23,7 @@ spec:
     - cat
     tty: true
   - name: kaniko
-    image: gcr.io/kaniko-project/executor:debug
+    image: gcr.io/kaniko-project/executor:v1.7.0-debug
     command:
     - cat
     tty: true
@@ -31,7 +31,7 @@ spec:
 }
   }
   stages {
-    /**stage('test') {
+    stage('test') {
       steps {
         container('gcloud') {
             sh '''
@@ -43,7 +43,7 @@ spec:
         }
       }
       
-      }**/
+      }
     stage('Bake') {
       steps {
         container('kaniko') {
