@@ -24,16 +24,6 @@ spec:
     tty: true
   - name: kaniko
     image: gcr.io/kaniko-project/executor:v1.7.0-debug
-  volumes:
-  - name: google-cloud-key
-    secret:
-      secretName: jenkins-sa
-    volumeMounts:
-    - name: google-cloud-key
-      mountPath: /var/secrets/google
-    env:
-    - name: GOOGLE_APPLICATION_CREDENTIALS
-      value: /var/secrets/google/key.json
     command:
     - cat
     tty: true
