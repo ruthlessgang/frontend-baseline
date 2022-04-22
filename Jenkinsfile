@@ -1,7 +1,7 @@
 pipeline {
   environment {
     PROJECT = "fis-poc-346406"
-    IMAGE_TAG = "gcr.io/fis-poc-346406/frontend-baseline"
+    IMAGE_TAG = "asia.gcr.io/fis-poc-346406/frontend-baseline"
     SVC_ACCOUNT_KEY = credentials('jenkins-sa')
   }
   agent {
@@ -23,7 +23,7 @@ spec:
     - cat
     tty: true
   - name: kaniko
-    image: gcr.io/kaniko-project/executor:debug
+    image: gcr.io/kaniko-project/executor:v1.6.0-debug
     command:
     - cat
     tty: true
@@ -49,7 +49,7 @@ spec:
         container('kaniko') {
             sh '''
             pwd
-            /kaniko/executor --dockerfile=./Dockerfile --context=/home/jenkins/agent/workspace/frontend --destination=gcr.io/fis-poc-346406/frontend-baseline --destination=gcr.io/fis-poc-346406/frontend-baseline 
+            /kaniko/executor --dockerfile=./Dockerfile --context=/home/jenkins/agent/workspace/frontend --destination=asia.gcr.io/fis-poc-346406/frontend-baseline --destination=asia.gcr.io/fis-poc-346406/frontend-baseline 
             '''
         }
       }
