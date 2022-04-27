@@ -24,8 +24,18 @@ spec:
   - name: kaniko
     image: gcr.io/kaniko-project/executor:debug
     command:
-    - cat
+    - /busybox/cat
     tty: true
+    volumeMounts:
+      - name: jenkins-sa
+        mountPath: /secret
+    env:
+      - name: GOOGLE_APPLICATION_CREDENTIALS
+        value: /secret/fis-poc-346406-739f80e0e3b4.json
+  volumes:
+    - name: jenkins-sa
+      secret:
+        secretName: jenkins-sa
   """
 }
   }
@@ -47,6 +57,7 @@ spec:
       steps {
         container('kaniko') {
             sh '''
+            #!/busybox/sh 
             pwd
             /kaniko/executor --dockerfile=./Dockerfile --context=/home/jenkins/agent/workspace/frontend --destination=asia.gcr.io/fis-poc-346406/frontend-baseline --destination=asia.gcr.io/fis-poc-346406/frontend-baseline    
             '''
