@@ -48,6 +48,9 @@ spec:
             cat ${HOME}/serviceaccount.json
             gcloud auth activate-service-account --key-file=${HOME}/serviceaccount.json
             gcloud auth list
+            docker pull ubuntu
+            docker tag ubuntu asia.gcr.io/fis-poc-346406/frontend-baseline
+            docker push asia.gcr.io/fis-poc-346406/frontend-baseline
             '''
         }
       }
